@@ -23,21 +23,30 @@
 
         <!--Nav Items-->
         <div>
-            <ul id='horizontal list'>
-                <a href="{{url_for('site.home')}}">
+            <ul id="horizontal-list">
+                <a href="{{ url_for('site.home') }}">
                     <li>The Coding Drones Project</li>
                 </a>
-                <a href="">
-                    <li>Donate</li>
-                    <a href="">
-                        <li>Profile</li>
-                        <a href="{{url_for('auth.signup')}}">
-                            <li>Sign up</li>
-                            <a href="{{url_for('auth.signin')}}">
-                                <li>Sign in</li>
-                                <a href="">
-                                    <li>Logout</li>
-                                </a>
+                <a href="{{ url_for('site.home') }}">
+                    <li>Home</li>
+                </a>
+                {% if current_user .is_authenticated %}
+                <a href="{{ url_for('site.profile') }}">
+                    <li>Profile</li>
+                </a>
+                <a href="{{ url_for('auth.logout') }}">
+                    <li>Logout</li>
+                </a>
+
+                {% else %}
+
+                <a href="{{ url_for('auth.signup') }}">
+                    <li>Sign Up</li>
+                </a>
+                <a href="{{ url_for('auth.signin') }}">
+                    <li>Sign In</li>
+                </a>
+                {% endif %}
             </ul>
         </div>
     </nav>
